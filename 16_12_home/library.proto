@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package library;
+
+option go_package = "/generated";
+
+// Описание книги
+message Book {
+  int32 id = 1;              // Уникальный идентификатор книги
+  string title = 2;          // Название книги
+  string author = 3;         // Автор книги
+}
+
+// Запрос на добавление книги
+message AddBookRequest {
+  string title = 1;
+  string author = 2;
+}
+
+// Ответ на добавление книги
+message AddBookResponse {
+  int32 id = 1;              // ID добавленной книги
+}
+
+// Пустой запрос
+message Empty {}
+
+// Ответ с полным списком книг
+message ListBooksResponse {
+  repeated Book books = 1;   // Список книг
+}
+
+// Запрос книги по ID
+message GetBookRequest {
+  int32 id = 1;              // ID книги
+}
+
+// Ответ с конкретной книгой
+message GetBookResponse {
+  Book book = 1;
+}
+
+// gRPC сервис
+service LibraryService {
+  rpc AddBook(AddBookRequest) returns (AddBookResponse);
+  rpc ListBooks(Empty) returns (ListBooksResponse);
+  rpc GetBook(GetBookRequest) returns (GetBookResponse);
+}

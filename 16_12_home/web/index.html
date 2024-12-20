@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Управление библиотекой</h1>
+
+    <!-- Форма для добавления книги -->
+    <h2>Добавить книгу</h2>
+    <form id="addBookForm">
+        <label for="title">Название:</label>
+        <input type="text" id="title" required><br><br>
+        <label for="author">Автор:</label>
+        <input type="text" id="author" required><br><br>
+        <button type="submit">Добавить книгу</button>
+    </form>
+
+    <!-- Раздел для отображения списка книг -->
+    <h2>Книги в библиотеке</h2>
+    <button onclick="fetchBooks()">Обновить список</button>
+    <ul id="bookList"></ul>
+
+    <!-- Раздел для получения информации о книге по ID -->
+    <h2>Получить книгу по ID</h2>
+    <input type="number" id="bookId" placeholder="Введите ID книги">
+    <button onclick="getBookById()">Получить книгу</button>
+    <div id="bookDetails"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
